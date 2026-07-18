@@ -1,8 +1,11 @@
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
+gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/all";
 
 const Showcase = () => {
-  const isTablet = userMediaQuery({ query: "(max-width: 1024px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
   useGSAP(() => {
     if (!isTablet) {
@@ -28,7 +31,7 @@ const Showcase = () => {
       <div className="media">
         <video src="/videos/game.mp4" loop muted autoPlay playsInline />
         <div className="mask">
-          <img src="/mask.logo.svg" />
+          <img src="/mask-logo.svg" />
         </div>
       </div>
       <div className="content">
