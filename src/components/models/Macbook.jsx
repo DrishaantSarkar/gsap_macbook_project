@@ -8,9 +8,12 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
-import React from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import useMacbookStore from "../../store";
+import React, { useRef, useEffect } from "react";
+import { noChangeParts } from "../../constants";
+import { Color } from "three";
+import * as THREE from "three";
 
 export default function MacbookModel(props) {
   const { color, texture } = useMacbookStore();

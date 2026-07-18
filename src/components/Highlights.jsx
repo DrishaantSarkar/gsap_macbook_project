@@ -12,7 +12,7 @@ const Highlights = () => {
         start: isMobile ? "bottom bottom" : "top top",
       },
       y: 0,
-      opcaity: 1,
+      opacity: 1,
       stagger: 0.5,
       duration: 1,
       ease: "power1.inOut",
