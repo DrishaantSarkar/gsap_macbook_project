@@ -3,6 +3,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Highlights = () => {
+  console.log("Highlights rendered");
+
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   useGSAP(() => {
