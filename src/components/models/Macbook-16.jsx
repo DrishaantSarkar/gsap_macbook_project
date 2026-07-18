@@ -12,7 +12,7 @@ import React, { useEffect } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import useMacbookStore from "../../store";
 import { noChangeParts } from "../../constants";
-import { color } from "three";
+import { color, SRGBColorSpace } from "three";
 
 export default function MackbookModel16(props) {
   const { color } = useMacbookStore();
@@ -21,6 +21,8 @@ export default function MackbookModel16(props) {
   );
 
   const texture = useTexture("/screen.png");
+  texture.colorSpace = SRGBColorSpace;
+  texture.needsUpdate = true;
 
   useEffect(() => {
     scene.tranerse((child) => {
