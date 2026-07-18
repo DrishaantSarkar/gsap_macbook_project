@@ -9,10 +9,11 @@ import MacbookModel from "./models/Macbook";
 import useMacbookStore from "../store";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRef } from "react";
 
 const ModelScroll = () => {
-  const groupRed = useRef(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px" });
+  const groupRef = useRef(null);
+  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const { setTexture } = useMacbookStore();
 
   useEffect(() => {
@@ -29,11 +30,10 @@ const ModelScroll = () => {
       v.load();
     });
   }, []);
-  (() => {}, []);
 
   useGSAP(() => {
     const modelTimeline = gsap.timeline({
-      ScrollTrigger: {
+      scrollTrigger: {
         trigger: "#f-canvas",
         start: "top top",
         end: "bottom top",
@@ -41,6 +41,7 @@ const ModelScroll = () => {
         pin: true,
       },
     });
+
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#f-canvas",
@@ -75,7 +76,7 @@ const ModelScroll = () => {
   }, []);
 
   return (
-    <group red={groupRef}>
+    <group ref={groupRef}>
       <Suspense
         fallback={
           <Html>
@@ -83,7 +84,7 @@ const ModelScroll = () => {
           </Html>
         }
       >
-        <MacbookModel scale={isMobile ? 0.05 : 0.08} postion={[0, -1, 0]} />
+        <MacbookModel scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
       </Suspense>
     </group>
   );
@@ -91,7 +92,7 @@ const ModelScroll = () => {
 
 const Features = () => {
   return (
-    <section if="features">
+    <section id="features">
       <h2>See it all in a new light.</h2>
 
       <Canvas id="f-canvas" camera={{}}>
